@@ -2,6 +2,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import { Measure } from '../Routers/Measure.Routers';
 dotenv.config();
 
 
@@ -10,7 +11,7 @@ class Server {
     private app: Application;
     private port: string;
     private apiPaths = {
-        users : '/api/users'
+        users : '/api/measure'
     }
 
     constructor()
@@ -22,7 +23,7 @@ class Server {
 
         this.middlewares();
         //Define my routes
-        // this.routers();
+        this.routers();
 
     }
 
@@ -46,9 +47,10 @@ class Server {
         })
     }
 
-    // routers(){
-    //     this.app.use(this.apiPaths.users, UserRoutes)
-    // }
+    routers(){
+
+        this.app.use(this.apiPaths.users, new Measure().GetMeasure())
+    }
 }
 
 export default Server;
