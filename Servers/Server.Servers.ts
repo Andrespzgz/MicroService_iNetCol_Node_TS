@@ -2,16 +2,17 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { Measure } from '../Routers/Measure.Routers';
+import {  MeasureRouter } from '../Routers/Measure.Routers';
+import { IMeasureRouter } from '../Routers/Interfaces/IMeasureRoute.Interfaces';
 dotenv.config();
 
 
 class Server {
-
+    readonly _measureRouter : IMeasureRouter
     private app: Application;
     private port: string;
     private apiPaths = {
-        users : '/api/measure'
+        measurements : '/api/measure'
     }
 
     constructor()
@@ -19,6 +20,8 @@ class Server {
         this.app = express();
         this.port = process.env.PORT || '8090';
 
+        //Call clases
+        this._measureRouter  = new MeasureRouter();       
         // call middewares
 
         this.middlewares();
@@ -49,7 +52,7 @@ class Server {
 
     routers(){
 
-        this.app.use(this.apiPaths.users, new Measure().GetMeasure())
+        this.app.use(this.apiPaths.measurements, this._measureRouter.GetMeasureRouter())
     }
 }
 

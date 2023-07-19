@@ -1,19 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Measure = void 0;
+exports.MeasureRouter = void 0;
 const express_1 = require("express");
-class Measure {
-    /**
-     *
-     */
+const Measure_Controllers_1 = require("../Controllers/Measure.Controllers");
+// interface IMeasureRouter{
+//     _measureController : IMeasureController
+//     GetMeasureRouter:any
+// }
+class MeasureRouter {
     constructor() {
+        this._measureController = new Measure_Controllers_1.MeasureController();
     }
-    GetMeasure() {
+    GetMeasureRouter() {
         const router = (0, express_1.Router)();
-        return router.get('/', (req, res) => {
-            res.json({ msg: "Get Method is working" });
-        });
+        return router.get('/', this._measureController.GetMeasure());
     }
 }
-exports.Measure = Measure;
+exports.MeasureRouter = MeasureRouter;
 //# sourceMappingURL=Measure.Routers.js.map

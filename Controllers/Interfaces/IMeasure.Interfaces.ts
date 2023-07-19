@@ -1,0 +1,3 @@
+interface IMeasureController{
+    GetMeasure : any;
+}

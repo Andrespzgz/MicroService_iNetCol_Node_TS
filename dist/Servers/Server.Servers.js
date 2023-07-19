@@ -11,10 +11,12 @@ dotenv_1.default.config();
 class Server {
     constructor() {
         this.apiPaths = {
-            users: '/api/measure'
+            measurements: '/api/measure'
         };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '8090';
+        //Call clases
+        this._measureRouter = new Measure_Routers_1.MeasureRouter();
         // call middewares
         this.middlewares();
         //Define my routes
@@ -35,7 +37,7 @@ class Server {
         });
     }
     routers() {
-        this.app.use(this.apiPaths.users, new Measure_Routers_1.Measure().GetMeasure());
+        this.app.use(this.apiPaths.measurements, this._measureRouter.GetMeasureRouter());
     }
 }
 exports.default = Server;
