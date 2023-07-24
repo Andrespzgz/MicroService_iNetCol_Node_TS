@@ -4,6 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import {  MeasureRouter } from '../Routers/Measure.Routers';
 import { IMeasureRouter } from '../Routers/Interfaces/IMeasureRoute.Interfaces';
+import dbConnection from '../Data/DBConnection.Data';
 dotenv.config();
 
 
@@ -24,10 +25,25 @@ class Server {
         this._measureRouter  = new MeasureRouter();       
         // call middewares
 
+        this.conectarBD();
+
         this.middlewares();
         //Define my routes
         this.routers();
 
+    }
+
+    async conectarBD()
+    {
+        try
+        {
+            await dbConnection.authenticate();
+            console.log('Database online');
+        }catch(error)
+        {
+            // throw new Error( 'error' );
+            console.error('Unable to connect to the database:',error);
+        }
     }
 
     middlewares(){

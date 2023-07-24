@@ -1,0 +1,1 @@
+{"version":3,"file":"DBConnection.Data.js","sourceRoot":"","sources":["../../Data/DBConnection.Data.ts"],"names":[],"mappings":";;AACA,yCAAuC;AAEvC,MAAM,YAAY,GAAG,IAAI,qBAAS,CAAC,iBAAiB,EAAC,IAAI,EAAC,UAAU,EAAC;IACjE,IAAI,EAAE,WAAW;IACjB,OAAO,EAAE,OAAO;IAChB,OAAO,EAAE,IAAI;CAChB,CAAC,CAAC;AAGH,kBAAe,YAAY,CAAA"}
