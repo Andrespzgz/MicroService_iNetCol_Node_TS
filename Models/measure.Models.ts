@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize';
-import dbConnection from '../Data/DBConnection.Data';
+import { DataBase } from '../Data/DBConnection.Data';
 
-const iTransMeasure = dbConnection.define('ReadingData', {
+const iTransMeasure = DataBase.Connection.define('ReadingData', {
     ReadingData_Id:{
         type: DataTypes.NUMBER,
         primaryKey: true,

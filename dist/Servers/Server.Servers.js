@@ -16,7 +16,7 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const Measure_Routers_1 = require("../Routers/Measure.Routers");
-const DBConnection_Data_1 = __importDefault(require("../Data/DBConnection.Data"));
+const DBConnection_Data_1 = require("../Data/DBConnection.Data");
 dotenv_1.default.config();
 class Server {
     constructor() {
@@ -36,7 +36,7 @@ class Server {
     conectarBD() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield DBConnection_Data_1.default.authenticate();
+                yield DBConnection_Data_1.DataBase.Connection.authenticate();
                 console.log('Database online');
             }
             catch (error) {

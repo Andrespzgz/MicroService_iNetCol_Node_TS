@@ -1,11 +1,12 @@
 
 import { Sequelize }  from 'sequelize';
 
-const dbConnection = new Sequelize('DataMeasurement','sa','Admin123',{
-    host: 'localhost',
-    dialect: 'mssql', 
-    logging: true
-});
+export class DataBase{
 
-
-export default dbConnection
+    //TODO: handler variables
+    static Connection = new Sequelize('DataMeasurement','sa','Admin123.',{
+        host: 'localhost',
+        dialect: 'mssql', 
+        logging: true
+    });
+}

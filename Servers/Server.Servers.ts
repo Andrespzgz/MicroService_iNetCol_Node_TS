@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import {  MeasureRouter } from '../Routers/Measure.Routers';
 import { IMeasureRouter } from '../Routers/Interfaces/IMeasureRoute.Interfaces';
-import dbConnection from '../Data/DBConnection.Data';
+import { DataBase } from '../Data/DBConnection.Data';
 dotenv.config();
 
 
@@ -37,7 +37,7 @@ class Server {
     {
         try
         {
-            await dbConnection.authenticate();
+            await DataBase.Connection.authenticate();
             console.log('Database online');
         }catch(error)
         {
